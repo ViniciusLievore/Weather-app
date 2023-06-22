@@ -1,0 +1,74 @@
+<div id="aviso_erro">{{ errorMessage }}</div>
+
+<div id="pesquisar">
+  <div class="global-page-container">
+    <div class="pesquisar_inner">
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Digite a cidade e o estado"
+        id="local"
+      />
+      <div
+        id="search-button"
+        (click)="pegarCoordenadasPesquisa(searchText)"
+      ></div>
+    </div>
+  </div>
+</div>
+<div id="weatherinfo">
+  <div class="results align-middle">
+    <div class="global-page-container">
+      <div id="texto_local" class="city_name col-sm-12">
+        {{ this.textoLocal }}
+      </div>
+      <div id="texto_clima" class="weather_result col-sm-12">
+        {{ this.weatherObject.textoClima }}
+      </div>
+
+      <div>
+        <div class="temperature">
+          <div
+            id="icone_clima"
+            class="weather_icon"
+            [ngStyle]="{
+              'background-image': 'url(' + weatherObject.icone + ')'
+            }"
+          ></div>
+          <div class="row">
+            <div id="texto_temperatura" class="temp_value col-sm-12">
+              {{ this.weatherObject.temperatura }}&deg;
+            </div>
+            <div id="texto_max_min" class="max_min_temp">
+              {{ this.textoMaxMin }}
+            </div>
+          </div>
+        </div>
+        <div class="weather_charts col-12">
+          <div id="hourly_chart_temperature" class="hourly_chart col-sm-12">
+            <div echarts [options]="optionTemperature" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="info_5dias" class="daily_info row"></div>
+
+      <div>
+        <div class="weather_charts col-12">
+          <div id="hourly_chart_direction" class="hourly_chart col-sm-12">
+            <div
+              echarts
+              [options]="optionWindDirection"
+              class="demo-chart"
+            ></div>
+          </div>
+        </div>
+        <div class="weather_charts col-12">
+          <div id="hourly_chart_speed" class="hourly_chart col-sm-12">
+            <div echarts [options]="optionWindSpeed" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
